@@ -514,3 +514,16 @@ body {
 .proyecto-galeria-item:hover img {
     transform: scale(1.05);
 }
+
+/* --- Media Queries para Tarjetas de Proyectos (arquitectura.html) --- */
+@media (max-width: 992px) {
+    .tarjeta {
+        width: 45%; /* 2 tarjetas por fila en tablets */
+    }
+}
+
+@media (max-width: 767px) {
+    .tarjeta {
+        width: 85%; /* 1 tarjeta por fila en móviles */
+    }
+}
