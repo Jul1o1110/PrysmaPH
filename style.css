@@ -72,7 +72,7 @@ body {
 }
 
 .btn-primary{
-    background-color: #FFD600;
+    background-color: #FFD600 !important;
     border: 1px solid black;
     color: black;
     transition: 0.3s;
