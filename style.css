@@ -219,6 +219,11 @@ body {
   transform: translateY(-5px);  
   box-shadow: 0 12px 28px rgba(0,0,0,0.8);
 }
+@media (max-width: 576px) {
+    #about {
+        text-align: center;
+    }
+}
 
 .rounded-circle{
     filter: brightness(0.8);
