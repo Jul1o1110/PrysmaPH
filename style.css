@@ -527,3 +527,6 @@ body {
         width: 85%; /* 1 tarjeta por fila en móviles */
     }
 }
+.fw-bold{
+    margin-top: 10%;
+}
