@@ -1,15 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
+
+  // --- Animación de elementos al cargar la página ---
   const elements = document.querySelectorAll(".animate-on-load");
 
   elements.forEach((el, index) => {
     setTimeout(() => {
       el.classList.add("visible");
-    }, index * 400); // cada elemento entra con 0.4s de diferencia
+    }, index * 200); // Reducimos un poco el delay para una carga más rápida
   });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const elements = document.querySelectorAll(".scroll-animate");
 
+  // --- Animación de elementos al hacer scroll ---
+  const scrollElements = document.querySelectorAll(".scroll-animate");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
     { threshold: 0.2 } // 20% visible para activar
   );
 
-  elements.forEach((el) => observer.observe(el));
-});
+  scrollElements.forEach((el) => observer.observe(el));
+

@@ -1,0 +1,110 @@
+.imagenes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 5%;
+
+ }
+.contenido-tarjeta{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+.tarjeta {
+    width: 25%; 
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0f0f;
+    border-radius: 5%;
+    overflow: hidden;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.tarjeta:hover{
+    transform: scale(1.05);
+    border: 1px solid rgba(255, 214, 0, 0.2);
+}
+
+.img-en-tarjeta {
+    margin-top: 2%;
+    width: 90%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 5%;
+    box-shadow: rgba(0, 0, 0, 0.5);
+}
+
+.contenido-tarjeta h4 {
+    color: white;
+    font-size: 1.5rem;
+}
+.titulo-arquitectura{
+    color: #FFD600;
+    font-size: 3rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+    cursor: default;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.titulo-arquitectura:hover {
+    transform: translateY( -5px);
+    text-shadow: 
+  2px 2px 6px rgba(0,0,0,0.9), 
+  0 0 12px rgba(255,214,0,0.8);
+}
+.descripcion-tarjeta {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out; 
+    position: absolute; 
+    bottom: 80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.tarjeta:hover .descripcion-tarjeta {
+    opacity: 1;
+}
+.form-control{
+    border-radius: 5px;
+    background-color: #afaeae;
+
+}
+.form-label{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.titulo-formulario{
+    color: #FFD600;
+    font-size: 2.0rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+    cursor: default;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+.titulo-formulario:hover {
+    transform: translateY( -5px);
+    text-shadow: 
+  2px 2px 6px rgba(0,0,0,0.9), 
+  0 0 12px rgba(255,214,0,0.8);
+
+}
+
+.subtitulo-formulario{
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
