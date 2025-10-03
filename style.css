@@ -28,8 +28,8 @@ body {
     background-color: #1D1D1B; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
 }
+
 .titulo-navbar {
     color: #fff;
     font-weight: bold;
@@ -88,21 +88,21 @@ body {
     color: #FFD002;
     transform: scale(1.05);
 }
+.offcanvas-end{
+    background-color: #1D1D1B !important;
+}
+.offcanvas-end:hover{
+    border-left: 2px solid #FFD002 !important;
+    transition: all 1s ease;
+}
 
 /* Estilo del título del offcanvas: invisible por defecto cuando el menú está abierto */
 .offcanvas.show #offcanvasDarkNavbarLabel {
     color: #FFD002;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    opacity: 0;
     flex-grow: 1;
     text-align: center;
 }
 
-/* Hace visible el título al pasar el cursor sobre el menú abierto */
-.offcanvas.show:hover #offcanvasDarkNavbarLabel {
-    opacity: 1;
-    transform: scale(1.05);
-}
 
 /* ==========================================================================
    3. CONTENIDO PRINCIPAL (BODY)

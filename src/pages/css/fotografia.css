@@ -120,6 +120,9 @@
     max-width: 700px;
     margin: 0 auto;
 }
+.bi-arrows-fullscreen{
+    color: #FFD600 !important;
+}
 
 /* --- Responsive --- */
 @media (max-width: 1200px) {
