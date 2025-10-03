@@ -1,110 +1,93 @@
-.imagenes-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 5%;
+/* ==========================================================================
+   ESTILOS PARA LA PÁGINA DE ARQUITECTURA
+   ========================================================================== */
 
- }
-.contenido-tarjeta{
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-}
-.tarjeta {
-    width: 25%; 
-    display: flex;
-    flex-direction: column;
-    background-color: #0f0f0f;
-    border-radius: 5%;
-    overflow: hidden;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-}
-.tarjeta:hover{
-    transform: scale(1.05);
-    border: 1px solid rgba(255, 214, 0, 0.2);
-}
-
-.img-en-tarjeta {
-    margin-top: 2%;
-    width: 90%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 5%;
-    box-shadow: rgba(0, 0, 0, 0.5);
-}
-
-.contenido-tarjeta h4 {
-    color: white;
-    font-size: 1.5rem;
-}
-.titulo-arquitectura{
+/* --- Títulos de la página --- */
+.titulo-arquitectura {
     color: #FFD600;
-    font-size: 3rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    letter-spacing: 1px;
-    cursor: default;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
-.titulo-arquitectura:hover {
-    transform: translateY( -5px);
-    text-shadow: 
-  2px 2px 6px rgba(0,0,0,0.9), 
-  0 0 12px rgba(255,214,0,0.8);
-}
-.descripcion-tarjeta {
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out; 
-    position: absolute; 
-    bottom: 80px; 
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
+    font-size: 2.8rem;
 }
 
-.tarjeta:hover .descripcion-tarjeta {
+.subtitulo-arquitectura {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Grid de Proyectos --- */
+.proyectos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Tarjeta de Proyecto Individual --- */
+.proyecto-card {
+    position: relative;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
+    text-decoration: none;
+}
+
+.proyecto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 214, 0, 0.2);
+}
+
+.proyecto-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.proyecto-card:hover .proyecto-card-img {
+    transform: scale(1.1);
+}
+
+.proyecto-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.proyecto-card:hover .proyecto-card-overlay {
     opacity: 1;
 }
-.form-control{
-    border-radius: 5px;
-    background-color: #afaeae;
 
-}
-.form-label{
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-.titulo-formulario{
+.proyecto-card-titulo {
     color: #FFD600;
-    font-size: 2.0rem;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-    letter-spacing: 1px;
-    cursor: default;
-    transition: all 0.3s ease;
+    font-size: 1.5rem;
     font-weight: bold;
-}
-.titulo-formulario:hover {
-    transform: translateY( -5px);
-    text-shadow: 
-  2px 2px 6px rgba(0,0,0,0.9), 
-  0 0 12px rgba(255,214,0,0.8);
-
+    margin-bottom: 1rem;
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
 }
 
-.subtitulo-formulario{
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.8;
-    font-size: 1.1rem;
+.proyecto-card:hover .proyecto-card-titulo {
+    transform: translateY(0);
+}
+
+/* --- Formulario de Contacto --- */
+.titulo-formulario {
+    color: #FFD600;
+    font-size: 2.5rem;
+}
+.subtitulo-formulario {
+    color: rgba(255, 255, 255, 0.7);
 }

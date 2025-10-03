@@ -1,16 +1,58 @@
-/* --- Estilos Galería Fotografía --- */
+/* ==========================================================================
+   ESTILOS PARA LA PÁGINA DE PORTAFOLIO DE FOTOGRAFÍA
+   ========================================================================== */
+
+/* --- Contenedor principal --- */
+.container-fluid {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* --- Filtros de la galería --- */
+.filtros-galeria {
+    margin-bottom: 2.5rem;
+}
+
+.filtros-galeria .btn {
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #ccc;
+    font-weight: bold;
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+}
+
+.filtros-galeria .btn:hover {
+    background-color: #FFD600;
+    color: #1D1D1B;
+    border-color: #FFD600;
+    transform: translateY(-2px);
+}
+
+.filtros-galeria .btn.active {
+    background-color: #FFD600;
+    color: #1D1D1B;
+    border-color: #FFD600;
+    box-shadow: 0 0 15px rgba(255, 214, 0, 0.3);
+}
+
+/* --- Galería Masonry --- */
 .galeria-fotografia {
-    column-count: 3; /* Número de columnas en escritorio */
-    column-gap: 1rem;
-    padding: 0 1rem;
+    column-count: 4;
+    column-gap: 1.5rem;
 }
 
 .galeria-item {
-    margin-bottom: 1rem;
-    break-inside: avoid; /* Evita que las imágenes se corten entre columnas */
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    width: 100%;
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
@@ -18,69 +60,80 @@
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.4s ease, filter 0.4s ease;
+    transition: transform 0.4s ease;
+}
+
+.galeria-item .overlay-galeria {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .galeria-item:hover img {
     transform: scale(1.05);
-    filter: brightness(0.4);
-}
-
-.overlay-galeria {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #FFD600;
-    font-weight: bold;
-    font-size: 1.5rem;
-    opacity: 0;
-    transition: opacity 0.4s ease;
 }
 
 .galeria-item:hover .overlay-galeria {
     opacity: 1;
 }
 
-/* Media queries para hacer la galería responsive */
-@media (max-width: 992px) {
-    .galeria-fotografia {
-        column-count: 2; /* 2 columnas en tablets */
-    }
+/* --- Estilos para el Modal (Lightbox) --- */
+.modal-content {
+    background-color: transparent;
+    border: none;
 }
 
+.modal-body {
+    padding: 0;
+}
+
+.modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.titulo-galeria {
+    color: #FFD600 !important;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+}
+.subtitulo-galeria{
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-size: 1.2rem;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+    .galeria-fotografia {
+        column-count: 3;
+    }
+}
+@media (max-width: 768px) {
+    .galeria-fotografia {
+        column-count: 2;
+    }
+}
 @media (max-width: 576px) {
     .galeria-fotografia {
-        column-count: 1; /* 1 columna en móviles */
+        column-count: 1;
     }
-}
-
-.galeria-texto-intermedio {
-    background-color: #0f0f0f;
-    border: 1px solid rgba(255, 214, 0, 0.2);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-bottom: 1rem;
-    break-inside: avoid;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 300px; /* Asegura que tenga una altura considerable */
-}
-
-.galeria-texto-intermedio h2 {
-    color: #FFD600;
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-.logo-intermedio {
-    width: 60px;
-    margin-bottom: 1rem;
 }

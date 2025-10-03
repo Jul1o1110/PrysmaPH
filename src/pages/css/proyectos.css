@@ -1,133 +1,193 @@
 /* ==========================================================================
-   1. ESTILOS GENERALES Y ANIMACIONES
+   ESTILOS ESPECÍFICOS PARA PÁGINAS DE PROYECTO
    ========================================================================== */
 
-body {
-    background-color: #1D1D1B;
-    color: #ffffff;
-    font-family: 'Arial Black', Arial, sans-serif;
-}
-
-/* Estado inicial oculto */
-.animate-on-load {
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: all 0.8s ease-out;
-}
-
-.animate-on-load.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ==========================================================================
-   2. BARRA DE NAVEGACIÓN (NAVBAR)
-   ================================================_========================= */
-
-.navbar {
-    background-color: #1D1D1B; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
-}
-.titulo-navbar {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.5rem;           
-    letter-spacing: 2px;         
-    text-shadow: 1px 1px 8px #222; 
-    transition: 
-        transform 0.3s,
-        text-shadow 0.3s;        
-    display: inline-block;
-    cursor: pointer;             
-}
-
-.navbar-brand img,
-.titulo-navbar{
+/* --- ENCABEZADO DEL PROYECTO --- */
+.titulo-arquitectura{
+    color: #FFD600;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
     cursor: default;
-}
-
-.navbar-toggler {
-    border-color: transparent;
-    transition: 0.3s;
-    box-shadow: none;
-}
-
-.navbar-toggler:hover,
-.navbar-toggler:active {
-    outline: none;
-    box-shadow: 0 0 0 0.2rem #FFD002;
-    border-color: #FFD002;
-}
-.dropdown-item{
-    transition: 0.3s;
-}
-
-.dropdown-item:hover{
-    color: #FFD002;
-}
-
-.clasificados{
-    transition: 0.3s;
-}.clasificados:hover{
-    color: #FFD002;
-}
-.nav-link.active.clasificados:hover {
-    color: #FFD002 !important;
-    transition: color 0.3s;
-}
-
-
-/* FOOTER */
-.footer-custom.dark-theme {
-    background-color: #1c1c1c; 
-    border-top: 1px solid #2e2e2e;
-}
-
-.footer-custom.dark-theme .footer-link {
-    color: #e5e5e5; 
-}
-
-.footer-custom.dark-theme .footer-link:hover {
-    color: #FFD002; 
-}
-
-.footer-custom.dark-theme .footer-icon {
-    color: #a3a3a3;
     transition: all 0.3s ease;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
-
-.footer-custom.dark-theme .footer-bottom {
-    color: #a3a3a3;
-    border-top: 1px solid #2e2e2e;
-}
-.footer-link{
-    text-decoration: none;
-    transition: color 0.3s;
-}.footer-link:hover{
-    color: #FFD002;
-    text-decoration: underline;
-}
-.bi-instagram:hover{
-   color: #E4405F !important;
-   transform: scale(1.1);
-}
-.bi-facebook:hover{
-   color: #1877F2 !important;
-   transform: scale(1.1);
-}
-.bi-whatsapp:hover{
-   color: #25D366 !important;
-   transform: scale(1.1);
+.subtitulo-arquitectura{
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-size: 1.2rem;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
-.rounded-circle{
-    filter: brightness(0.8);
-    transition: all 1s ease;
+/* --- CONTENEDOR PRINCIPAL Y HERO --- */
+.container{
+    max-width: 1100px;
+    width: 100%;
 }
-.rounded-circle:hover{
-    filter: brightness(1.0);
-    transform: scale(1.5)
+
+.proyecto-hero{
+    position: relative; /* Necesario para el overlay */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.proyecto-hero img{
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.proyecto-hero:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(209, 202, 202, 0.2);
+}
+
+.proyecto-hero:hover img {
+    transform: scale(1.1);
+}
+
+.proyecto-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.proyecto-hero:hover .proyecto-hero-overlay {
+    opacity: 1;
+}
+
+.proyecto-hero .proyecto-card-titulo {
+    color: #FFD600;
+    font-weight: bold;
+    transform: translateY(20px);
+    transition: transform 0.5s ease;
+}
+
+/* --- DESCRIPCIÓN Y DATOS DEL PROYECTO --- */
+.proyecto-descripcion p {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #e0e0e0;
+}
+
+.proyecto-datos {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 5px solid #FFD600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.6s ease;
+}
+
+.proyecto-datos:hover {
+    transform: translateX(10px)!important ;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-right: 5px solid #FFD600;
+}
+
+.proyecto-datos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.proyecto-datos li {
+    font-size: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #3a3a3a;
+    color: #c5c5c5;
+}
+
+.proyecto-datos:hover li {
+    color: #FFD600;
+    transition: all 0.6s ease;
+}
+
+.proyecto-datos li:last-child {
+    border-bottom: none;
+}
+
+.proyecto-datos strong {
+    color: #ffffff;
+    min-width: 120px;
+    display: inline-block;
+}
+
+/* --- GALERÍA DEL PROYECTO --- */
+.titulo-formulario { /* Reutilizado para el título de la galería */
+    color: #FFD600;
+    font-size: 2.5rem;
+}
+
+.proyecto-galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.proyecto-galeria-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.proyecto-galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.proyecto-galeria-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(255, 214, 0, 0.15);
+}
+
+.proyecto-galeria-item:hover img {
+    transform: scale(1.1);
+}
+
+.galeria-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 80%);
+    padding: 2rem 1rem 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    color: #FFD600 !important;
+    font-weight: bold;
+}
+
+.proyecto-galeria-item:hover .galeria-item-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- BOTÓN DE REGRESO --- */
+.btn-primary {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }

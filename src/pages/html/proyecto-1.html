@@ -6,13 +6,54 @@
     <title>Nombre del Proyecto - Prysma PH</title>
     <link rel="icon" type="image/x-icon" href="/public/logoWeb.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/src/pages/css/proyectos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/src/css/proyecto.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
-
+    <nav class="navbar navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/index.html">
+      <img src="/public/logoWeb.png" alt="Logo" width="35" height="29" class="d-inline-block align-text-top logo">
+      <span class="titulo-navbar">PrysmaPH</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Prysma PH</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active clasificados" aria-current="page" href="/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active clasificados" aria-current="page" href="/src/pages/html/arquitectura.html">Arquitectura</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active clasificados" aria-current="page" href="/src/pages/html/fotografia.html">Fotografía</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link clasificados" href="/src/pages/html/arquitectura.html#contacto">Te contactamos</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle clasificados" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Escribenos
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Whatsapp</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://www.instagram.com/prysmaph?utm_source=ig_web_button_share_sheet&igsh=NG41MnJtdXI5eGF1">Instagram</a></li>
+              <li><a class="dropdown-item" href="#">Facebook</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
     <!-- CONTENIDO DEL PROYECTO -->
     <div class="container-fluid mt-5 pt-5">
         <div class="row">
@@ -29,6 +70,9 @@
         <div class="proyecto-hero scroll-animate">
             <!-- CAMBIA LA IMAGEN PRINCIPAL AQUÍ -->
             <img src="/public/Diseño1.jpg" alt="Vista principal del proyecto">
+            <div class="proyecto-hero-overlay">
+                <h3 class="proyecto-card-titulo">Parcelación Altamira, Rionegro</h3>
+            </div>
         </div>
 
         <!-- DETALLES DEL PROYECTO -->
@@ -60,9 +104,18 @@
         </div>
         <div class="proyecto-galeria mt-4">
             <!-- CAMBIA LAS IMÁGENES DE LA GALERÍA AQUÍ -->
-            <div class="proyecto-galeria-item scroll-animate"><img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Interior" alt="Detalle interior"></div>
-            <div class="proyecto-galeria-item scroll-animate"><img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Fachada" alt="Detalle fachada"></div>
-            <div class="proyecto-galeria-item scroll-animate"><img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Jardín" alt="Vista del jardín"></div>
+            <div class="proyecto-galeria-item scroll-animate">
+                <img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Interior" alt="Detalle interior">
+                <div class="galeria-item-overlay">Vista Interior</div>
+            </div>
+            <div class="proyecto-galeria-item scroll-animate">
+                <img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Fachada" alt="Detalle fachada">
+                <div class="galeria-item-overlay">Fachada Principal</div>
+            </div>
+            <div class="proyecto-galeria-item scroll-animate">
+                <img src="https://via.placeholder.com/800x600/0f0f0f/FFD600?text=Jardín" alt="Vista del jardín">
+                <div class="galeria-item-overlay">Zona de Jardín</div>
+            </div>
         </div>
 
         <!-- BOTÓN DE REGRESO -->
@@ -70,9 +123,30 @@
             <a href="/src/pages/html/arquitectura.html" class="btn btn-primary btn-lg scroll-animate">Volver a Proyectos</a>
         </div>
     </div>
+    <footer class="footer-custom dark-theme py-4">
+      <div class="container-fluid container-lg">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 py-3">
+          <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-4">
+            <a class="footer-link" href="#">Política de Privacidad</a>
+            <a class="footer-link" href="#">Términos de Servicio</a>
+            <a class="footer-link" href="#">Contacto</a>
+          </div>
+          <div class="d-flex justify-content-center gap-3">
+            <a target="_blank" href="https://www.instagram.com/prysmaph?utm_source=ig_web_button_share_sheet&igsh=NG41MnJtdXI5eGF1" class="bi bi-instagram footer-icon"></a>
+            <a target="_blank" href="" class="bi bi-facebook footer-icon"></a>
+            <a target="_blank" href="" class="bi bi-whatsapp footer-icon"></a>
+          </div>
+        </div>
+        <div class="text-center py-3 mt-3 footer-bottom">
+          <p class="m-0">@2025 PrysmaPH. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
 
-    <!-- Placeholder para el footer -->
-    <footer-placeholder></footer-placeholder>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/TUNUMERO" class="whatsapp-flotante" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
     <script src="/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
