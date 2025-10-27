@@ -1,0 +1,50 @@
+        /* Estilos específicos para el dashboard, si los necesitas */
+        .dashboard-container {
+            min-height: calc(100vh - 150px);
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        .table-dark th,
+        .table-dark td {
+            border-color: #444;
+        }
+
+        .cierreSesion {
+            background-color: #444;
+            border-color: white;
+            color: white;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        
+        .navbar:hover .cierreSesion {
+            background-color: #FFD002 !important;
+            color: black !important;
+            border-color: #FFD002 !important;
+        }
+
+        
+        .cierreSesion:hover {
+            background-color: #FFD002 !important;
+            color: black !important;
+            border-color: #FFD002 !important;
+        }
+
+        
+        .btn-eliminar {
+            background-color: transparent;
+            border: none;
+            color: #dc3545; 
+            font-size: 1.1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-eliminar:hover {
+            color: #ff4d62; /* Un rojo más brillante al pasar el mouse */
+            transform: scale(1.2);
+        }
