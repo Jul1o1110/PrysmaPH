@@ -1,29 +1,31 @@
-/**
- * Modelo de datos para MensajeContacto
- * Representa un mensaje de contacto enviado por un usuario
- */
+// modelo para los mensajes de contacto que mandan los usuarios
+// guarda la informacion de contacto y el mensaje
 class MensajeContacto {
     constructor(data = {}) {
+        // asigno los datos del mensaje
         this.id = data.id || null;
         this.nombre = data.nombre || '';
         this.email = data.email || '';
         this.telefono = data.telefono || null;
         this.mensaje = data.mensaje || '';
-        this.fecha_envio = data.fecha_envio || null;
+        this.fechaEnvio = data.fecha_envio || null; // cambio fecha_envio a fechaEnvio
     }
 
-    /**
-     * Convierte el objeto a formato JSON para la API
-     */
-    toJSON() {
-        return {
+    // funcion para convertir el mensaje a JSON
+    convertirAJSON() {
+        // creo el objeto con los datos
+        // importante: uso fechaEnvio con camelCase para el frontend
+        const objetoJSON = {
             id: this.id,
             nombre: this.nombre,
             email: this.email,
             telefono: this.telefono,
             mensaje: this.mensaje,
-            fechaEnvio: this.fecha_envio // Usando camelCase para el frontend
+            fechaEnvio: this.fechaEnvio // mando fechaEnvio para que el frontend lo entienda
         };
+        
+        // retorno el objeto
+        return objetoJSON;
     }
 }
 

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Admin credentials for frontend authentication
+// credenciales del administrador para autenticacion en el frontend
 export const ADMIN = [
     {
         usuario: process.env.ADMIN_USER || 'admin',
@@ -11,29 +11,37 @@ export const ADMIN = [
     }
 ];
 
-// Database connection pool configuration
-const pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'portafolio',
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+// configuracion del pool de conexiones a la base de datos
+// el pool permite reutilizar conexiones y es mas eficiente
+const poolConexion = mysql.createPool({
+    host: process.env.DB_HOST || 'localhost', // donde esta la base de datos
+    port: process.env.DB_PORT || 3306, // puerto de mysql
+    user: process.env.DB_USER || 'root', // usuario de la BD
+    password: process.env.DB_PASSWORD || '', // contrasena de la BD
+    database: process.env.DB_NAME || 'portafolio', // nombre de la base de datos
+    waitForConnections: true, // esperar si no hay conexiones disponibles
+    connectionLimit: 10, // maximo 10 conexiones simultaneas
+    queueLimit: 0 // sin limite de cola
 });
 
-// Test database connection
-export async function testConnection() {
+// funcion para probar la conexion a la base de datos
+export async function probarConexion() {
     try {
-        const connection = await pool.getConnection();
-        console.log('✅ Database connected successfully');
-        connection.release();
+        // intento obtener una conexion del pool
+        const conexion = await poolConexion.getConnection();
+        // si llego aqui, la conexion funciona
+        console.log('✅ Base de datos conectada exitosamente');
+        // libero la conexion para que otros la puedan usar
+        conexion.release();
+        // retorno true porque todo salio bien
         return true;
     } catch (error) {
-        console.error('❌ Database connection failed:', error.message);
+        // si hay error, lo imprimo
+        console.error('❌ Fallo la conexion a la base de datos:', error.message);
+        // retorno false porque hubo un error
         return false;
     }
 }
 
-export default pool;
+// exporto el pool como default para usarlo en otros archivos
+export default poolConexion;

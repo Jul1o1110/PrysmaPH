@@ -4,22 +4,19 @@ import { galeriaProyectoValidationRules } from '../validators/galeriaProyectoVal
 
 const router = express.Router();
 
-/**
- * GET /api/proyectos/:id/galeria
- * Obtener galería de un proyecto específico
- */
-router.get('/proyectos/:id/galeria', GaleriaProyectoController.getByProyecto);
+// GET /api/proyectos/:id/galeria
+// endpoint para obtener todas las imagenes de la galeria de un proyecto
+// requiere el id del proyecto
+router.get('/proyectos/:id/galeria', GaleriaProyectoController.obtenerPorProyecto);
 
-/**
- * POST /api/galeria
- * Agregar imagen a galería
- */
-router.post('/galeria', galeriaProyectoValidationRules, GaleriaProyectoController.create);
+// POST /api/galeria
+// endpoint para agregar una nueva imagen a la galeria de un proyecto
+// requiere: id_proyecto, url_imagen
+router.post('/galeria', galeriaProyectoValidationRules, GaleriaProyectoController.crear);
 
-/**
- * DELETE /api/galeria/:id
- * Eliminar imagen de galería
- */
-router.delete('/galeria/:id', GaleriaProyectoController.delete);
+// DELETE /api/galeria/:id
+// endpoint para eliminar una imagen de la galeria
+// requiere el id de la imagen
+router.delete('/galeria/:id', GaleriaProyectoController.eliminar);
 
 export default router;

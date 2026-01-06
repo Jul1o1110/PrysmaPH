@@ -4,34 +4,29 @@ import { proyectoValidationRules, proyectoUpdateValidationRules } from '../valid
 
 const router = express.Router();
 
-/**
- * GET /api/proyectos
- * Listar todos los proyectos (con filtro opcional por categoría via query param)
- */
-router.get('/', ProyectoController.getAll);
+// GET /api/proyectos
+// endpoint para listar todos los proyectos
+// tambien permite filtrar por categoria usando ?categoria=arquitectura o ?categoria=fotografia
+router.get('/', ProyectoController.obtenerTodos);
 
-/**
- * GET /api/proyectos/:id
- * Obtener proyecto por ID con su galería
- */
-router.get('/:id', ProyectoController.getById);
+// GET /api/proyectos/:id
+// endpoint para obtener un proyecto especifico por su id
+// incluye las imagenes de su galeria
+router.get('/:id', ProyectoController.obtenerPorId);
 
-/**
- * POST /api/proyectos
- * Crear nuevo proyecto
- */
-router.post('/', proyectoValidationRules, ProyectoController.create);
+// POST /api/proyectos
+// endpoint para crear un nuevo proyecto
+// requiere: titulo, descripcion, imagen_principal, categoria
+router.post('/', proyectoValidationRules, ProyectoController.crear);
 
-/**
- * PUT /api/proyectos/:id
- * Actualizar proyecto existente
- */
-router.put('/:id', proyectoUpdateValidationRules, ProyectoController.update);
+// PUT /api/proyectos/:id
+// endpoint para actualizar un proyecto existente
+// se pueden actualizar cualquiera de los campos del proyecto
+router.put('/:id', proyectoUpdateValidationRules, ProyectoController.actualizar);
 
-/**
- * DELETE /api/proyectos/:id
- * Eliminar proyecto (cascade a galería)
- */
-router.delete('/:id', ProyectoController.delete);
+// DELETE /api/proyectos/:id
+// endpoint para eliminar un proyecto
+// tambien elimina todas las imagenes de su galeria automaticamente
+router.delete('/:id', ProyectoController.eliminar);
 
 export default router;

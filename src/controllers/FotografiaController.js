@@ -2,81 +2,113 @@ import { validationResult } from 'express-validator';
 import FotografiaRepository from '../repositories/FotografiaRepository.js';
 import Fotografia from '../models/Fotografia.js';
 
-/**
- * Controlador para Fotografías
- */
+// controlador para manejar las fotografias independientes
+// estas son fotos que no pertenecen a ningun proyecto en particular
 class FotografiaController {
-    /**
-     * Listar todas las fotografías, con filtro opcional por categoría
-     */
-    async getAll(req, res) {
+    // funcion para obtener todas las fotografias
+    // tambien permite filtrar por categoria
+    async obtenerTodas(req, res) {
         try {
-            const { categoria } = req.query;
+            // obtengo la categoria si la mandaron
+            const categoria = req.query.categoria;
 
+            // declaro variable para las fotografias
             let fotografias;
+            
+            // verifico si me mandaron categoria para filtrar
             if (categoria) {
-                fotografias = await FotografiaRepository.findByCategoria(categoria);
+                // si me mandaron categoria, filtro por ella
+                fotografias = await FotografiaRepository.obtenerPorCategoria(categoria);
             } else {
-                fotografias = await FotografiaRepository.findAll();
+                // si no me mandaron categoria, traigo todas
+                fotografias = await FotografiaRepository.obtenerTodas();
             }
 
-            res.status(200).json(fotografias.map(f => f.toJSON()));
+            // creo un array para mandar al frontend
+            const fotografiasJSON = [];
+            
+            // recorro todas las fotografias
+            for (let i = 0; i < fotografias.length; i++) {
+                // convierto cada foto a JSON
+                const fotoJSON = fotografias[i].convertirAJSON();
+                // la agrego al array
+                fotografiasJSON.push(fotoJSON);
+            }
+
+            // mando la respuesta
+            res.status(200).json(fotografiasJSON);
         } catch (error) {
-            console.error('Error al obtener fotografías:', error);
-            res.status(500).json({ error: 'Error interno del servidor al obtener fotografías' });
+            // si hay error, lo imprimo
+            console.error('Error al obtener fotografias:', error);
+            res.status(500).json({ error: 'Error interno del servidor al obtener fotografias' });
         }
     }
 
-    /**
-     * Crear nueva fotografía
-     */
-    async create(req, res) {
+    // funcion para crear una nueva fotografia
+    async crear(req, res) {
         try {
-            // Validar datos de entrada
-            const errors = validationResult(req);
-            if (!errors.isEmpty()) {
-                return res.status(400).json({ errors: errors.array() });
+            // valido los datos que me mandaron
+            const errores = validationResult(req);
+            
+            if (!errores.isEmpty()) {
+                // si hay errores, los mando al cliente
+                return res.status(400).json({ errors: errores.array() });
             }
 
+            // creo la fotografia con los datos
             const fotografia = new Fotografia(req.body);
-            const fotografiaId = await FotografiaRepository.create(fotografia);
+            
+            // guardo la fotografia en la base de datos
+            const fotografiaId = await FotografiaRepository.crear(fotografia);
 
+            // mando respuesta exitosa
             res.status(201).json({
-                mensaje: 'Fotografía creada exitosamente',
+                mensaje: 'Fotografia creada exitosamente',
                 id: fotografiaId,
-                fotografia: fotografia.toJSON()
+                fotografia: fotografia.convertirAJSON()
             });
         } catch (error) {
-            console.error('Error al crear fotografía:', error);
-            res.status(500).json({ error: 'Error interno del servidor al crear fotografía' });
+            // si hay error, lo imprimo
+            console.error('Error al crear fotografia:', error);
+            res.status(500).json({ error: 'Error interno del servidor al crear fotografia' });
         }
     }
 
-    /**
-     * Eliminar fotografía
-     */
-    async delete(req, res) {
+    // funcion para eliminar una fotografia
+    async eliminar(req, res) {
         try {
-            const { id } = req.params;
+            // obtengo el id de la fotografia
+            const id = req.params.id;
 
-            if (!id || isNaN(id)) {
-                return res.status(400).json({ error: 'ID de fotografía inválido' });
+            // valido el id
+            if (!id) {
+                return res.status(400).json({ error: 'ID de fotografia invalido' });
+            }
+            
+            if (isNaN(id)) {
+                return res.status(400).json({ error: 'ID de fotografia invalido' });
             }
 
-            const eliminado = await FotografiaRepository.delete(id);
+            // elimino la fotografia
+            const eliminado = await FotografiaRepository.eliminar(id);
 
+            // verifico que se haya eliminado
             if (!eliminado) {
-                return res.status(404).json({ error: 'Fotografía no encontrada' });
+                // si no se elimino, es porque no existe
+                return res.status(404).json({ error: 'Fotografia no encontrada' });
             }
 
+            // mando respuesta exitosa
             res.status(200).json({
-                mensaje: 'Fotografía eliminada exitosamente'
+                mensaje: 'Fotografia eliminada exitosamente'
             });
         } catch (error) {
-            console.error('Error al eliminar fotografía:', error);
-            res.status(500).json({ error: 'Error interno del servidor al eliminar fotografía' });
+            // si hay error, lo imprimo
+            console.error('Error al eliminar fotografia:', error);
+            res.status(500).json({ error: 'Error interno del servidor al eliminar fotografia' });
         }
     }
 }
 
+// exporto una instancia del controlador
 export default new FotografiaController();
